@@ -31,6 +31,9 @@
 			<a href="https://github.com/Bootstrap-Academy" target="_blank">
 				<IconGithub class="fill-accent transition-basic hover:scale-125" />
 			</a>
+			<a href="https://inmediasp.de" target="_blank">
+                <img src="https://inmediasp.de/favicon.icon" alt="InMediasP" class="w-6 h-6 transition-basic hover:scale-125" />
+            </a>
 		</article>
 
 		<section

@@ -11,27 +11,30 @@
 		/>
 
 		<article
-			class="transition-basic card bg-secondary rounded-lg"
-			v-for="(icon, i) of features"
-			:key="i"
-		>
-			<component
-				class="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 fill-accent mx-auto mb-box"
-				:is="icon"
-			></component>
-			<h3 class="text-heading-2 font-heading mb-2.5 mt-box mx-auto text-center">
-				{{ t(`List.Features.${i + 1}.Heading`) }}
-			</h3>
-			<p class="font-body text-body text-body-2 mx-auto text-center">
-				{{ t(`List.Features.${i + 1}.Body`) }}
-			</p>
-		</article>
+    class="transition-basic card bg-secondary rounded-lg"
+    v-for="(icon, i) of features"
+    :key="i"
+>
+	<NuxtLink :to="featurePaths[i]" class="block">
+		<component
+			class="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 fill-accent mx-auto mb-box"
+			:is="icon"
+		></component>
+		<h3 class="text-heading-2 font-heading mb-2.5 mt-box mx-auto text-center">
+			{{ t(`List.Features.${i + 1}.Heading`) }}
+		</h3>
+		<p class="font-body text-body text-body-2 mx-auto text-center">
+			{{ t(`List.Features.${i + 1}.Body`) }}
+		</p>
+	</NuxtLink>
+</article>
 	</section>
 </template>
 
 <script lang="ts">
 import { CheckCircleIcon } from '@heroicons/vue/24/solid';
 import { useI18n } from 'vue-i18n';
+import { ref, onMounted } from 'vue';
 
 export default {
   components: { CheckCircleIcon },
@@ -49,10 +52,20 @@ export default {
       CheckCircleIcon,
     ];
 
+    let featurePaths = [
+      'courses',
+      'webinars',
+      'coaches',
+      'jobs',
+      'challenges',
+      'skill-tree',
+    ];
+
     onMounted(() => {
       setStaggeringAOSViaParent(aos.value, 'aos', 'show', [0]);
     });
-    return { features, t, aos };
+
+    return { features, featurePaths, t, aos };
   },
 };
 </script>
